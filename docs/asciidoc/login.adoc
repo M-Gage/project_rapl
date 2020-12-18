@@ -1,0 +1,141 @@
+= B系统登录接口 RESTFul APIs
+
+
+=== 版本信息
+[%hardbreaks]
+__版本__ : 0.0.1
+
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : localhost:8086
+__基础路径__ : /
+
+[[_paths]]
+== 资源
+
+[[_loginusingpost]]
+==== 登录获取token
+....
+POST /login
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**用户登录对象** +
+__必填__|传入json格式|<<_df6eb66472516c228df1d62f76890578,登录对象>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_413a64c225e2c4f80e5646f2d8ac6cf9,数据返回类>>
+|===
+
+
+===== 网络文件的类型
+
+* `application/json`
+
+
+
+===== 安全
+
+[options="header", cols=".^3,.^4,.^13"]
+|===
+|类型|名称|作用域
+|**apiKey**|**<<_authorization,Authorization>>**|global
+|===
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/login
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "appKey" : "string",
+  "key" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "message" : "string"
+}
+----
+
+
+
+[[_definitions]]
+== 定义
+
+
+[[_413a64c225e2c4f80e5646f2d8ac6cf9]]
+=== 数据返回类
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**code** +
+__可选__|响应编码号 +
+**样例** : `0`|integer (int32)
+|**data** +
+__可选__|返回数据 +
+**样例** : `"object"`|object
+|**message** +
+__可选__|具体信息 +
+**样例** : `"string"`|string
+|===
+
+
+
+[[_df6eb66472516c228df1d62f76890578]]
+=== 登录对象
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**appKey** +
+__必填__|appKey(app唯一标识） +
+**样例** : `"string"`|string
+|**key** +
+__必填__|密码（用rsa加密） +
+**样例** : `"string"`|string
+|===
+
+
+
+
+[[_securityscheme]]
+== 安全
+
+[[_authorization]]
+=== Authorization
+[%hardbreaks]
+__类型__ : apiKey
+__名称__ : Authorization
+__在__ : HEADER
+
+
+

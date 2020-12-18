@@ -1,0 +1,239 @@
+= 神灯风控 RESTFul APIs
+
+
+== 版本信息
+[%hardbreaks]
+__版本__ : 1.1.3
+
+
+[[_loginusingpost]]
+== 获取token
+|===
+|Method|Path|Type|Authorization
+|**POST**|**http[s]://ip_address/login**|application/json|false
+|===
+
+=== 接口示例
+
+==== 请求 body
+[source,json]
+----
+    {
+      "appKey":"hezuofangappweiyibiaoshi", //(平台提供）合作机构授信唯一标识
+      "key":"AiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtaW54aW5nZGFpMDAxIiwiYXBQiOiIxMDAxIiw=="  //(平台提供）合作机构授信密码，使用RSA进行加密后传输
+    }
+----
+
+==== 响应 200
+[source,json]
+----
+    {
+      "code": 200,              //200表示成功，非200表示失败
+      "message": "请求成功",     //信息描述
+      "data": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtaW54aW5nZGFpMDAxIiwiYXBwSWQiOiIxMDAxIiwiYXBwS2V5IjoibWlueGluZ2RhaTAwMSIsImV4cCI6MTU2ODk2MDcwMSwiaWF0IjoxNTY2MzY4NzAxfQ.HsHuwmHMaNQ_VzFF_QMeHI9zlUdsuXHGsoDx-sLQ4N415J9o2iTXfyfNritA6lNvmdedCmrk0OOzXu-QMb89xQ" //成功是返回token字符串，否则为null
+    }
+----
+
+
+== 风控评分接口
+|===
+|method|path|type|Authorization
+|**POST**|**http[s]://ip_address/api/model/kanJinLong**|application/json|true
+|===
+
+=== 接口示例
+
+==== 请求 body
+[source,json]
+----
+    {
+      "modelNo": "加密后的模型编号",	       //使用RSA进行加密后传输(平台提供）
+      "modelName": "加密后的模型名称",	     //使用RSA进行加密后传输(平台提供）
+      "channelId": "131231",	            //渠道编号（可选）
+      "user": { //用户三要素（必传），学信状态若是没有数据则传0，也是必传
+            "name":"张三",	               //用户名
+            "idCard":"123456789123456789",      //身份证
+            "mobile":"1234567891234",	   //电话号码
+            "CHSIStatus":"0"                    //学信状态0未认证1成功认证 2认证失败
+        }//使用RSA进行加密后传输
+    }
+----
+示例
+
+==== 响应 200
+[source,json]
+----
+    {
+      "code": 200,		 //200表示成功，非200表示失败
+      "message": "请求成功",	//信息描述
+      "data":"j+nipauswTXaBQ3rtKkjDb5Yac1KKa4cB7s+zku0vCmBNThYD4FWZ+rz9GkGvf0BgE+NZoJs6DflceAfOBKNQVCc8Q5nO5Ns6NLws/sTCqVNxjg0YSzH8zUoy/UhdY9OGnMg8mHC7LNVAYKkjDb5Yac1KKa4cB7s+zku0vCmBNThYD4FWZ+rz9GkGvf0BgE+NZoJs6DflceAfOBKNQVCc8Q5nO5Ns6NLws/sTCqVNxjg0YCc8Q5nO5Ns6NLws/sTCqVNxjg0YSzH8zUoy/UhdY9OGnMg8mHC7LNVAYKkjDb5Yac1KKa4cB7s+zku0vCmBNThYD4FWZ+rz9GkGv="     //成功是返回加密字符串，否则为null
+    }
+----
+===== data解密数据
+[source,json]
+----
+    {
+      "idCard": "320481198701017624",       //身份证
+      "mobile": "13775259361",              //电话
+      "register_count_12M": 15,             //用户近12个月发生的注册行为总次数
+      "register_count_6M": 5,               //用户近6个月发生的注册行为总次数
+      "lastRegisterTime": "2019-08-23",     //用户最近一次发生注册行为的日期，格式为YYYY-MM-DD
+      "loan_count_12M": 461.78539038640815, //用户近12个月的贷款（成功放款）的总笔数
+      "loan_count_6M": 461.78539038640815,  //用户近6个月的贷款（成功放款）的总笔数
+      "lastLoanTime": "2019-09-02",         //用户最近一次贷款（成功放款）的日期，格式为YYYY-MM-DD
+      "score": 561.78539038640815,          //风控评分
+      "taskId": "10011566373296912370"      //请求唯一id
+    }
+----
+
+== 放款计划标识接口（可选）
+说明：用户每借一次款将录入一笔，他方借款笔数影响分值，为此保证风控的分值调整
+|===
+|method|path|type|Authorization
+|**POST**|**http[s]://ip_address/api/save/loan/info**|application/json|true
+|===
+
+=== 接口示例
+
+==== 请求 body
+[source,json]
+----
+    {
+      "indFangTime" : "2019-09-23T08:08:18.780Z",   //放款时间(需要时间对象Date())
+      "indId" : "154381240779122128",               //id(唯一)
+      "indMoneyJie" : "2000",                       //借款金额
+      "userIdcard" : "320481198701017624",          //用户身份证号
+      "userMobile" : "13775259361",                 //用户手机号
+      "userName" : "张三"                            //用户名称
+    }
+----
+
+==== 响应 200
+[source,json]
+----
+    {
+      "code": 200,               //200表示成功，非200表示失败
+      "message": "请求成功",       //信息描述
+      "data": null               //成功为null
+    }
+----
+
+== 还款计划接口（可选）
+说明：当用户每还一笔时调用一次接口，当用户还清时indIfPay为1，为此保证风控的分值调整，若监测到他方逾期用户下次借款将会失败
+|===
+|method|path|type|Authorization
+|**POST**|**http[s]://ip_address/api/save/repayment/info**|application/json|true
+|===
+
+=== 接口示例
+
+==== 请求 body
+[source,json]
+----
+    {
+      "indRepayTime" : "2019-09-23T08:08:18.780Z",   //还款时间(需要时间对象Date())
+      "indId" : "154381240779122128",                //id(唯一)
+      "indRepayMoney" : "2000",                      //还款金额
+      "indIfPay" : "320481198701017624",             //是否结清：0：未结清,1：已结清，2：续期中，3：逾期
+    }
+----
+
+==== 响应 200
+[source,json]
+----
+    {
+      "code": 200,              //200表示成功，非200表示失败
+      "message": "请求成功",    //信息描述
+      "data": null              //成功为null
+    }
+----
+
+备注:
+注意：返回数据可能会在没有知会的情况下增加，请做好及时沟通
+
+[[_securityscheme]]
+== 安全
+
+[[_authorization]]
+=== Authorization
+[%hardbreaks]
+当Authorization为true时需要传token
+__类型__ : JWT
+__名称__ : Authorization
+__在__ : Header
+
+=== RSA
++ 我方提供公钥，加解密都只用公钥
+
+== 错误码字典
+
+
+=== 流程错误
+|===
+|错误码|错误信息
+|110| 账号密码错误
+|111| 账号被禁用
+|===
+=== 请求结果
+|===
+|错误码|错误信息
+|200|请求成功
+|201|数据中心返回错误
+|204|请求数据中心时出现异常
+|202|返回数据为空
+|203|数据库查询结果为空
+|205|该用户为黑名单用户
+|===
+===  参数错误
+|===
+|错误码|错误信息
+|300| 请求参数有误
+|301| 账号密码不能为空
+|302| 参数类型转换错误
+|303| 查询不到对应模型,请确保模型在使用中
+|304| 关键报文缺失
+|312| 原始密码错误
+|380| 参数解压错误
+|381| 参数压缩错误
+|382| 压缩参数为空
+|383| 解压参数为空
+|===
+===  验证错误
+|===
+|错误码|错误信息
+|460| 加密错误
+|461| 解密错误
+|462| 数字签名出错
+|463| 生成数字签名错误
+|464| 数字签名验证错误
+|===
+
+=== 系统错误
+|===
+|错误码|错误信息
+|500|系统异常
+|501|系统异常,录入失败
+|502|插入失败
+|503|删除失败
+|504|修改失败
+|505|YML获取参数错误
+|===
+=== 方法错误
+|===
+|错误码|错误信息
+|600|JSON 序列化错误
+|601|JSON 解析错误
+|602|JSON 解析内容为空
+|603|MAP获取的key值为空
+|604|MAP的key获取的内容为空
+|605|输入流转化成字节流错误
+|===
+===  其他
+|===
+|错误码|错误信息
+|700| REDIS未获取到相关信息
+|710|TOKEN不合法
+|711|TOKEN失效
+|712|TOKEN为空
+|713|TOKEN过期
+|===

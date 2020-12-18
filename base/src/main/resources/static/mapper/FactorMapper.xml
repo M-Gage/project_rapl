@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.FactorMapper">
+  <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.Factor">
+    <!--@mbg.generated-->
+    <!--@Table factor-->
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+    <result column="processing_strategy" property="processingStrategy" />
+    <result column="report" property="report" />
+    <result column="factor_filed" property="factorFiled" />
+    <result column="factor_formula" property="factorFormula" />
+    <result column="extend_score" property="extendScore" />
+    <result column="sum" property="sum" />
+    <result column="create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, processing_strategy, report, factor_filed, factor_formula, extend_score, 
+    `sum`, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from factor
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from factor
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.Factor" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into factor (`name`, processing_strategy, report, factor_filed, factor_formula, 
+      extend_score, `sum`, create_time)
+    values (#{name}, #{processingStrategy}, #{report}, #{factorFiled}, #{factorFormula}, 
+      #{extendScore}, #{sum}, #{createTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.Factor" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into factor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="processingStrategy != null">
+        processing_strategy,
+      </if>
+      <if test="report != null">
+        report,
+      </if>
+      <if test="factorFiled != null">
+        factor_filed,
+      </if>
+      <if test="factorFormula != null">
+        factor_formula,
+      </if>
+      <if test="extendScore != null">
+        extend_score,
+      </if>
+      <if test="sum != null">
+        `sum`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="processingStrategy != null">
+        #{processingStrategy},
+      </if>
+      <if test="report != null">
+        #{report},
+      </if>
+      <if test="factorFiled != null">
+        #{factorFiled},
+      </if>
+      <if test="factorFormula != null">
+        #{factorFormula},
+      </if>
+      <if test="extendScore != null">
+        #{extendScore},
+      </if>
+      <if test="sum != null">
+        #{sum},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.Factor">
+    <!--@mbg.generated-->
+    update factor
+    <set>
+      <if test="name != null">
+        `name` = #{name},
+      </if>
+      <if test="processingStrategy != null">
+        processing_strategy = #{processingStrategy},
+      </if>
+      <if test="report != null">
+        report = #{report},
+      </if>
+      <if test="factorFiled != null">
+        factor_filed = #{factorFiled},
+      </if>
+      <if test="factorFormula != null">
+        factor_formula = #{factorFormula},
+      </if>
+      <if test="extendScore != null">
+        extend_score = #{extendScore},
+      </if>
+      <if test="sum != null">
+        `sum` = #{sum},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.Factor">
+    <!--@mbg.generated-->
+    update factor
+    set `name` = #{name},
+      processing_strategy = #{processingStrategy},
+      report = #{report},
+      factor_filed = #{factorFiled},
+      factor_formula = #{factorFormula},
+      extend_score = #{extendScore},
+      `sum` = #{sum},
+      create_time = #{createTime}
+    where id = #{id}
+  </update>
+  <select id="selectListByFactorStr" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from factor
+    where id in (${factor})
+  </select>
+</mapper>

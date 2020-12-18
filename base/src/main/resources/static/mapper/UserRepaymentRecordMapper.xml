@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.UserRepaymentRecordMapper">
+    <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.UserRepaymentRecord">
+        <!--@mbg.generated-->
+        <id column="id" property="id"/>
+        <result column="ind_id" property="indId"/>
+        <result column="ind_repay_time" property="indRepayTime"/>
+        <result column="ind_repay_money" property="indRepayMoney"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, ind_id, ind_repay_time, ind_repay_money, create_time, update_time, `status`
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from user_repayment_record
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from user_repayment_record
+        where id = #{id}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="com.qingting.middleware.entity.UserRepaymentRecord" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into user_repayment_record (ind_id, ind_repay_time, ind_repay_money, create_time, update_time,
+        `status`)
+        values (#{indId}, #{indRepayTime}, #{indRepayMoney}, #{createTime}, #{updateTime},
+        #{status})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.qingting.middleware.entity.UserRepaymentRecord" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into user_repayment_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="indId != null">
+                ind_id,
+            </if>
+            <if test="indRepayTime != null">
+                ind_repay_time,
+            </if>
+            <if test="indRepayMoney != null">
+                ind_repay_money,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="indId != null">
+                #{indId},
+            </if>
+            <if test="indRepayTime != null">
+                #{indRepayTime},
+            </if>
+            <if test="indRepayMoney != null">
+                #{indRepayMoney},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.UserRepaymentRecord">
+        <!--@mbg.generated-->
+        update user_repayment_record
+        <set>
+            <if test="indId != null">
+                ind_id = #{indId},
+            </if>
+            <if test="indRepayTime != null">
+                ind_repay_time = #{indRepayTime},
+            </if>
+            <if test="indRepayMoney != null">
+                ind_repay_money = #{indRepayMoney},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="status != null">
+                `status` = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.UserRepaymentRecord">
+        <!--@mbg.generated-->
+        update user_repayment_record
+        set ind_id = #{indId},
+        ind_repay_time = #{indRepayTime},
+        ind_repay_money = #{indRepayMoney},
+        create_time = #{createTime},
+        update_time = #{updateTime},
+        `status` = #{status}
+        where id = #{id}
+    </update>
+    <update id="updateStatusByIndIdAndRepayTime" parameterType="com.qingting.middleware.entity.UserRepaymentRecord">
+        <!--@mbg.generated-->
+        update user_repayment_record set `status` = #{status} where
+        unix_timestamp(ind_repay_time) = round(unix_timestamp(#{indRepayTime})) and ind_id = #{indId}
+    </update>
+</mapper>

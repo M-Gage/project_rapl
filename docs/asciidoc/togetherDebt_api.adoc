@@ -1,0 +1,580 @@
+= 共债接口 RESTFul APIs
+
+
+=== 版本信息
+[%hardbreaks]
+__版本__ : 0.0.1
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : localhost:8086
+__基础路径__ : /
+
+[[_paths]]
+== 资源
+
+
+[[_deleteusertogetherdebtloaninfousingpost]]
+==== 删除借款记录
+....
+POST /api/del/together/debt/loan
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**订单id，状态** +
+__必填__|传入加密json格式|<<_togetherdebtdeletebean,TogetherDebtDeleteBean>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_413a64c225e2c4f80e5646f2d8ac6cf9,数据返回类>>
+|===
+
+
+===== 网络文件的类型
+
+* `application/json`
+
+
+
+
+===== 安全
+
+[options="header", cols=".^3,.^4,.^13"]
+|===
+|类型|名称|作用域
+|**apiKey**|**<<_authorization,Authorization>>**|global
+|===
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/del/together/debt/loan
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "indId" : "string",
+  "indRepayTime" : "string",
+  "status" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "message" : "string"
+}
+----
+
+
+[[_deleteusertogetherdebtrepaymentinfousingpost]]
+==== 删除还款记录
+....
+POST /api/del/together/debt/repayment
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**订单id，还款时间，状态** +
+__必填__|传入加密json格式|<<_togetherdebtdeletebean,TogetherDebtDeleteBean>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_413a64c225e2c4f80e5646f2d8ac6cf9,数据返回类>>
+|===
+
+
+===== 网络文件的类型
+
+* `application/json`
+
+
+
+
+===== 安全
+
+[options="header", cols=".^3,.^4,.^13"]
+|===
+|类型|名称|作用域
+|**apiKey**|**<<_authorization,Authorization>>**|global
+|===
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/del/together/debt/repayment
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "indId" : "string",
+  "indRepayTime" : "string",
+  "status" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "message" : "string"
+}
+----
+
+
+[[_getusertogetherdebtinfousingget]]
+==== 获取用户共债情况
+....
+GET /api/get/together/debt/info
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**prdId** +
+__可选__|产品id|string
+|**Query**|**userIdcard** +
+__可选__|用户身份证号|string
+|**Query**|**userMobile** +
+__可选__|用户手机号|string
+|**Query**|**userName** +
+__可选__|用户名称|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_12d078b65ca2a05900760970d1415ccb,数据返回类«TogetherDebtResultBean»>>
+|===
+
+
+
+
+===== 安全
+
+[options="header", cols=".^3,.^4,.^13"]
+|===
+|类型|名称|作用域
+|**apiKey**|**<<_authorization,Authorization>>**|global
+|===
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/get/together/debt/info
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "prdId" : "string",
+  "userIdcard" : "string",
+  "userMobile" : "string",
+  "userName" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : {
+    "monitorCount" : 0,
+    "totalCount" : 0
+  },
+  "message" : "string"
+}
+----
+
+
+[[_saveloaninfousingpost]]
+==== 放款信息传输接口
+....
+POST /api/save/loan/info
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**用户放款对象** +
+__必填__|传入加密json格式|<<_loanbean,LoanBean>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_413a64c225e2c4f80e5646f2d8ac6cf9,数据返回类>>
+|===
+
+
+===== 网络文件的类型
+
+* `application/json`
+
+
+
+
+===== 安全
+
+[options="header", cols=".^3,.^4,.^13"]
+|===
+|类型|名称|作用域
+|**apiKey**|**<<_authorization,Authorization>>**|global
+|===
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/save/loan/info
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "indFangTime" : "string",
+  "indId" : "string",
+  "indMoneyJie" : "string",
+  "userIdcard" : "string",
+  "userMobile" : "string",
+  "userName" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "message" : "string"
+}
+----
+
+
+[[_saverepaymentrecordinfousingpost]]
+==== 结清信息传输接口
+....
+POST /api/save/repayment/info
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**用户还款对象** +
+__必填__|传入加密json格式|<<_repaymentbean,RepaymentBean>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_413a64c225e2c4f80e5646f2d8ac6cf9,数据返回类>>
+|===
+
+
+===== 网络文件的类型
+
+* `application/json`
+
+
+
+
+===== 安全
+
+[options="header", cols=".^3,.^4,.^13"]
+|===
+|类型|名称|作用域
+|**apiKey**|**<<_authorization,Authorization>>**|global
+|===
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/save/repayment/info
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "indId" : "string",
+  "indIfPay" : "string",
+  "indRepayMoney" : "string",
+  "indRepayTime" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "message" : "string"
+}
+----
+
+
+[[_updatepaystatususingpost]]
+==== 修改结清状态为未结清状态
+....
+POST /api/update/pay/status
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**订单号和产品编号** +
+__必填__|传入加密json格式|<<_baseloanbean,BaseLoanBean>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_413a64c225e2c4f80e5646f2d8ac6cf9,数据返回类>>
+|===
+
+
+===== 网络文件的类型
+
+* `application/json`
+
+
+
+
+===== 安全
+
+[options="header", cols=".^3,.^4,.^13"]
+|===
+|类型|名称|作用域
+|**apiKey**|**<<_authorization,Authorization>>**|global
+|===
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/update/pay/status
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "indId" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "message" : "string"
+}
+----
+
+
+[[_definitions]]
+== 定义
+
+[[_baseloanbean]]
+=== BaseLoanBean
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**indId** +
+__必填__|订单id +
+**样例** : `"string"`|string
+|===
+
+
+[[_loanbean]]
+=== LoanBean
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**indFangTime** +
+__必填__|放款时间 +
+**样例** : `"string"`|string (date-time)
+|**indId** +
+__必填__|订单id +
+**样例** : `"string"`|string
+|**indMoneyJie** +
+__必填__|借款金额 +
+**样例** : `"string"`|string
+|**userIdcard** +
+__必填__|用户身份证号 +
+**样例** : `"string"`|string
+|**userMobile** +
+__必填__|用户手机号 +
+**样例** : `"string"`|string
+|**userName** +
+__必填__|用户名称 +
+**样例** : `"string"`|string
+|===
+
+
+[[_repaymentbean]]
+=== RepaymentBean
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**indId** +
+__必填__|订单id +
+**样例** : `"string"`|string
+|**indIfPay** +
+__必填__|是否结清：0 未结清 ；1 已结清 ；默认 0 +
+**样例** : `"string"`|string
+|**indRepayMoney** +
+__必填__|结清金额 +
+**样例** : `"string"`|string
+|**indRepayTime** +
+__必填__|结清时间 +
+**样例** : `"string"`|string (date-time)
+|===
+
+
+[[_togetherdebtdeletebean]]
+=== TogetherDebtDeleteBean
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**indId** +
+__必填__|订单id +
+**样例** : `"string"`|string
+|**indRepayTime** +
+__可选__|还款时间 +
+**样例** : `"string"`|string (date-time)
+|**status** +
+__必填__|状态：0 正常 ；-1 删除 ；默认 0 +
+**样例** : `"string"`|string
+|===
+
+
+[[_413a64c225e2c4f80e5646f2d8ac6cf9]]
+=== 数据返回类
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**code** +
+__可选__|响应编码号 +
+**样例** : `0`|integer (int32)
+|**data** +
+__可选__|返回数据 +
+**样例** : `"object"`|object
+|**message** +
+__可选__|具体信息 +
+**样例** : `"string"`|string
+|===
+
+
+
+
+[[_securityscheme]]
+== 安全
+
+[[_authorization]]
+=== Authorization
+[%hardbreaks]
+__类型__ : apiKey
+__名称__ : Authorization
+__在__ : HEADER
+
+
+

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.SysUser">
+    <!--@mbg.generated-->
+    <id column="id" property="id" />
+    <result column="phone" property="phone" />
+    <result column="username" property="username" />
+    <result column="password" property="password" />
+    <result column="name" property="name" />
+    <result column="last_login" property="lastLogin" />
+    <result column="status" property="status" />
+    <result column="remark" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, phone, username, `password`, `name`, last_login, `status`, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from sys_user
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.qingting.middleware.entity.SysUser">
+    <!--@mbg.generated-->
+    insert into sys_user (id, phone, username, `password`, `name`, last_login, `status`, 
+      remark)
+    values (#{id}, #{phone}, #{username}, #{password}, #{name}, #{lastLogin}, #{status}, 
+      #{remark})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qingting.middleware.entity.SysUser">
+    <!--@mbg.generated-->
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="lastLogin != null">
+        last_login,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="phone != null">
+        #{phone},
+      </if>
+      <if test="username != null">
+        #{username},
+      </if>
+      <if test="password != null">
+        #{password},
+      </if>
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="lastLogin != null">
+        #{lastLogin},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="remark != null">
+        #{remark},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.SysUser">
+    <!--@mbg.generated-->
+    update sys_user
+    <set>
+      <if test="phone != null">
+        phone = #{phone},
+      </if>
+      <if test="username != null">
+        username = #{username},
+      </if>
+      <if test="password != null">
+        `password` = #{password},
+      </if>
+      <if test="name != null">
+        `name` = #{name},
+      </if>
+      <if test="lastLogin != null">
+        last_login = #{lastLogin},
+      </if>
+      <if test="status != null">
+        `status` = #{status},
+      </if>
+      <if test="remark != null">
+        remark = #{remark},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.SysUser">
+    <!--@mbg.generated-->
+    update sys_user
+    set phone = #{phone},
+      username = #{username},
+      `password` = #{password},
+      `name` = #{name},
+      last_login = #{lastLogin},
+      `status` = #{status},
+      remark = #{remark}
+    where id = #{id}
+  </update>
+  <select id="userLogin" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    where username = #{username} and password = #{password} and status = 0
+  </select>
+</mapper>

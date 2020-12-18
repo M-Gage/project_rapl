@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: dev
+
+# mybatis 配置
+mybatis:
+  type-aliases-package: com.qingting.middleware.entity
+  mapper-locations: classpath*:static/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

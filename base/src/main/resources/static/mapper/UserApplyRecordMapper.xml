@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.UserApplyRecordMapper">
+  <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.UserApplyRecord">
+    <!--@mbg.generated-->
+    <!--@Table user_apply_record-->
+    <id column="id" property="id" />
+    <result column="app_id" property="appId" />
+    <result column="name" property="name" />
+    <result column="id_card" property="idCard" />
+    <result column="mobile" property="mobile" />
+    <result column="task_id" property="taskId" />
+    <result column="apply_time" property="applyTime" />
+    <result column="zcaf_flag" property="zcafFlag" />
+    <result column="status" property="status" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, app_id, `name`, id_card, mobile, task_id, apply_time, zcaf_flag, `status`, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user_apply_record
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from user_apply_record
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.UserApplyRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_apply_record (app_id, `name`, id_card, mobile, task_id, apply_time, zcaf_flag, 
+      `status`, create_time, update_time)
+    values (#{appId}, #{name}, #{idCard}, #{mobile}, #{taskId}, #{applyTime}, #{zcafFlag}, 
+      #{status}, #{createTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.UserApplyRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_apply_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="applyTime != null">
+        apply_time,
+      </if>
+      <if test="zcafFlag != null">
+        zcaf_flag,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        #{appId},
+      </if>
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="idCard != null">
+        #{idCard},
+      </if>
+      <if test="mobile != null">
+        #{mobile},
+      </if>
+      <if test="taskId != null">
+        #{taskId},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime},
+      </if>
+      <if test="zcafFlag != null">
+        #{zcafFlag},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+
+  <insert id="insertFxpgSharePushByA" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.UserApplyRecord" useGeneratedKeys="true">
+    <!--A系统批量推送afu风险评估共享版数据-->
+    insert into user_apply_record (app_id, `name`, id_card, mobile, task_id, apply_time, zcaf_flag,
+    `status`, create_time, update_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+        #{item.appId}, #{item.name}, #{item.idCard}, #{item.mobile}, #{item.taskId}, #{item.applyTime}, #{item.zcafFlag},
+        #{item.status}, #{item.createTime}, #{item.updateTime}
+      )
+    </foreach>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.UserApplyRecord">
+    <!--@mbg.generated-->
+    update user_apply_record
+    <set>
+      <if test="appId != null">
+        app_id = #{appId},
+      </if>
+      <if test="name != null">
+        `name` = #{name},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId},
+      </if>
+      <if test="applyTime != null">
+        apply_time = #{applyTime},
+      </if>
+      <if test="zcafFlag != null">
+        zcaf_flag = #{zcafFlag},
+      </if>
+      <if test="status != null">
+        `status` = #{status},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.UserApplyRecord">
+    <!--@mbg.generated-->
+    update user_apply_record
+    set app_id = #{appId},
+      `name` = #{name},
+      id_card = #{idCard},
+      mobile = #{mobile},
+      task_id = #{taskId},
+      apply_time = #{applyTime},
+      zcaf_flag = #{zcafFlag},
+      `status` = #{status},
+      create_time = #{createTime},
+      update_time = #{updateTime}
+    where id = #{id}
+  </update>
+    <update id="updateBatchApplyRecord">
+      update user_apply_record set status = #{status}
+      where app_id =#{appId} and mobile in (<foreach collection="userMobile" item="m" separator=",">
+      #{m}
+    </foreach>)
+    </update>
+
+  <!-- 阿福反查,查询申请通过信息 -->
+  <select id="fxpgShareByUser" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select
+          app_id,
+          status,
+          id_card,
+          create_time,
+          name
+      from user_apply_record
+      where zcaf_flag = 1 and id_card = #{id_no} order by create_time asc limit 1;
+  </select>
+  <update id="updateStatusByAppIdAndIdCard">
+    update user_apply_record
+    set zcaf_flag = '1',update_time = #{updateTime}
+    where app_id = #{appId} and id_card =#{idCard}
+  </update>
+
+</mapper>

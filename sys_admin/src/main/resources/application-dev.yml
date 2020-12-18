@@ -1,0 +1,50 @@
+server:
+  port: 8085
+spring:
+  datasource:
+    url: jdbc:mysql://47.104.80.252:3306/test_b?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=Asia/Shanghai
+    password: qingTing-2018
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cache:
+    ehcache:
+      config: classpath:static/ehcache.xml
+  #redis参数
+
+  redis:
+    database: 3
+    host: 39.108.162.204
+    port: 8084
+    password: test123456
+    lettuce: # 生菜（jedis）连接Redis的客户端程序
+      pool:
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 9
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+        # 连接池中的最小空闲连接
+        min-idle: 0
+  # 连接超时时间（毫秒）默认2000ms
+#    timeout: 2000
+
+# 是否启用swagger
+swagger:
+  enable: true
+
+#控制台输出日志
+logging:
+  level:
+    com.qingting.middleware: debug
+
+
+# token 参数配置
+jwt:
+  # 标记
+  header: Authorization
+  # 密码
+  secret: 12(U@}!)@&*()$*)&TPIU324_)K@(!~~!@@#
+  # token过期时间(一个月）
+  expiration: 2592000000
+

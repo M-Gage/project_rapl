@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.AppRequestBacklistRecordMapper">
+  <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.AppRequestBacklistRecord">
+    <!--@mbg.generated-->
+    <id column="id" property="id" />
+    <result column="app_id" property="appId" />
+    <result column="black_list_name" property="blackListName" />
+    <result column="task_id" property="taskId" />
+    <result column="channel_id" property="channelId" />
+    <result column="request_result" property="requestResult" />
+    <result column="create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, app_id, black_list_name, task_id, channel_id, request_result, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from app_request_backlist_record
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from app_request_backlist_record
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.AppRequestBacklistRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into app_request_backlist_record (app_id, black_list_name, task_id, channel_id, request_result, create_time
+      )
+    values (#{appId}, #{blackListName}, #{taskId}, #{channelId}, #{requestResult}, #{createTime}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.AppRequestBacklistRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into app_request_backlist_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="blackListName != null">
+        black_list_name,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="requestResult != null">
+        request_result,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        #{appId},
+      </if>
+      <if test="blackListName != null">
+        #{blackListName},
+      </if>
+      <if test="taskId != null">
+        #{taskId},
+      </if>
+      <if test="channelId != null">
+        #{channelId},
+      </if>
+      <if test="requestResult != null">
+        #{requestResult},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.AppRequestBacklistRecord">
+    <!--@mbg.generated-->
+    update app_request_backlist_record
+    <set>
+      <if test="appId != null">
+        app_id = #{appId},
+      </if>
+      <if test="blackListName != null">
+        black_list_name = #{blackListName},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId},
+      </if>
+      <if test="channelId != null">
+        channel_id = #{channelId},
+      </if>
+      <if test="requestResult != null">
+        request_result = #{requestResult},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.AppRequestBacklistRecord">
+    <!--@mbg.generated-->
+    update app_request_backlist_record
+    set app_id = #{appId},
+      black_list_name = #{blackListName},
+      task_id = #{taskId},
+      channel_id = #{channelId},
+      request_result = #{requestResult},
+      create_time = #{createTime}
+    where id = #{id}
+  </update>
+</mapper>

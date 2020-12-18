@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.SysUserOperatingRecordMapper">
+  <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.SysUserOperatingRecord">
+    <!--@mbg.generated-->
+    <id column="id" property="id" />
+    <result column="user_id" property="userId" />
+    <result column="create_time" property="createTime" />
+    <result column="type" property="type" />
+    <result column="controller_name" property="controllerName" />
+    <result column="info" property="info" />
+    <result column="param" property="param" />
+    <result column="result" property="result" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, create_time, `type`, controller_name, info, param, `result`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_operating_record
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from sys_user_operating_record
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.SysUserOperatingRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_user_operating_record (user_id, create_time, `type`, controller_name, info, param, 
+      `result`)
+    values (#{userId}, #{createTime}, #{type}, #{controllerName}, #{info}, #{param}, 
+      #{result})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.SysUserOperatingRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_user_operating_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="controllerName != null">
+        controller_name,
+      </if>
+      <if test="info != null">
+        info,
+      </if>
+      <if test="param != null">
+        param,
+      </if>
+      <if test="result != null">
+        `result`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="controllerName != null">
+        #{controllerName},
+      </if>
+      <if test="info != null">
+        #{info},
+      </if>
+      <if test="param != null">
+        #{param},
+      </if>
+      <if test="result != null">
+        #{result},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.SysUserOperatingRecord">
+    <!--@mbg.generated-->
+    update sys_user_operating_record
+    <set>
+      <if test="userId != null">
+        user_id = #{userId},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="type != null">
+        `type` = #{type},
+      </if>
+      <if test="controllerName != null">
+        controller_name = #{controllerName},
+      </if>
+      <if test="info != null">
+        info = #{info},
+      </if>
+      <if test="param != null">
+        param = #{param},
+      </if>
+      <if test="result != null">
+        `result` = #{result},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.SysUserOperatingRecord">
+    <!--@mbg.generated-->
+    update sys_user_operating_record
+    set user_id = #{userId},
+      create_time = #{createTime},
+      `type` = #{type},
+      controller_name = #{controllerName},
+      info = #{info},
+      param = #{param},
+      `result` = #{result}
+    where id = #{id}
+  </update>
+</mapper>

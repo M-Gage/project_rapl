@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.AppConfigureMapper">
+  <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.AppConfigure">
+    <!--@mbg.generated-->
+    <id column="id" property="id" />
+    <result column="app_id" property="appId" />
+    <result column="app_all" property="appAll" />
+    <result column="app_switch" property="appSwitch" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, app_id, app_all, app_switch
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from app_configure
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from app_configure
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.AppConfigure" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into app_configure (app_id, app_all, app_switch)
+    values (#{appId}, #{appAll}, #{appSwitch})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.AppConfigure" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into app_configure
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="appAll != null">
+        app_all,
+      </if>
+      <if test="appSwitch != null">
+        app_switch,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        #{appId},
+      </if>
+      <if test="appAll != null">
+        #{appAll},
+      </if>
+      <if test="appSwitch != null">
+        #{appSwitch},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.AppConfigure">
+    <!--@mbg.generated-->
+    update app_configure
+    <set>
+      <if test="appId != null">
+        app_id = #{appId},
+      </if>
+      <if test="appAll != null">
+        app_all = #{appAll},
+      </if>
+      <if test="appSwitch != null">
+        app_switch = #{appSwitch},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.AppConfigure">
+    <!--@mbg.generated-->
+    update app_configure
+    set app_id = #{appId},
+      app_all = #{appAll},
+      app_switch = #{appSwitch}
+    where id = #{id}
+  </update>
+    <select id="selectByProductId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from app_configure
+        where app_id = #{appId} and app_switch = 0
+    </select>
+</mapper>

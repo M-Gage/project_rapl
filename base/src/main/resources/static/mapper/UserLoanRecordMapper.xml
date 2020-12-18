@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.UserLoanRecordMapper">
+    <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.UserLoanRecord">
+        <!--@mbg.generated-->
+        <id column="id" property="id"/>
+        <result column="app_id" property="appId"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_idCard" property="userIdcard"/>
+        <result column="user_mobile" property="userMobile"/>
+        <result column="ind_id" property="indId"/>
+        <result column="ind_money_jie" property="indMoneyJie"/>
+        <result column="ind_fang_time" property="indFangTime"/>
+        <result column="last_repayment_time" property="lastRepaymentTime"/>
+        <result column="ind_if_pay" property="indIfPay"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+    </resultMap>
+    <resultMap id="ResultUserLoanRecordBean" type="com.qingting.middleware.bean.UserLoanRecordBean"
+               extends="BaseResultMap">
+        <result column="periods" property="periods"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, app_id, user_name, user_idCard, user_mobile, ind_id, ind_money_jie, ind_fang_time,
+        last_repayment_time, ind_if_pay, create_time, update_time, `status`
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from user_loan_record
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from user_loan_record
+        where id = #{id}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.UserLoanRecord"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into user_loan_record (app_id, user_name, user_idCard, user_mobile, ind_id, ind_money_jie,
+        ind_fang_time, last_repayment_time, ind_if_pay, create_time, update_time,
+        `status`)
+        values (#{appId}, #{userName}, #{userIdcard}, #{userMobile}, #{indId}, #{indMoneyJie},
+        #{indFangTime}, #{lastRepaymentTime}, #{indIfPay}, #{createTime}, #{updateTime},
+        #{status})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.qingting.middleware.entity.UserLoanRecord" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into user_loan_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="appId != null">
+                app_id,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="userIdcard != null">
+                user_idCard,
+            </if>
+            <if test="userMobile != null">
+                user_mobile,
+            </if>
+            <if test="indId != null">
+                ind_id,
+            </if>
+            <if test="indMoneyJie != null">
+                ind_money_jie,
+            </if>
+            <if test="indFangTime != null">
+                ind_fang_time,
+            </if>
+            <if test="lastRepaymentTime != null">
+                last_repayment_time,
+            </if>
+            <if test="indIfPay != null">
+                ind_if_pay,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="appId != null">
+                #{appId},
+            </if>
+            <if test="userName != null">
+                #{userName},
+            </if>
+            <if test="userIdcard != null">
+                #{userIdcard},
+            </if>
+            <if test="userMobile != null">
+                #{userMobile},
+            </if>
+            <if test="indId != null">
+                #{indId},
+            </if>
+            <if test="indMoneyJie != null">
+                #{indMoneyJie},
+            </if>
+            <if test="indFangTime != null">
+                #{indFangTime},
+            </if>
+            <if test="lastRepaymentTime != null">
+                #{lastRepaymentTime},
+            </if>
+            <if test="indIfPay != null">
+                #{indIfPay},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.UserLoanRecord">
+        <!--@mbg.generated-->
+        update user_loan_record
+        <set>
+            <if test="appId != null">
+                app_id = #{appId},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName},
+            </if>
+            <if test="userIdcard != null">
+                user_idCard = #{userIdcard},
+            </if>
+            <if test="userMobile != null">
+                user_mobile = #{userMobile},
+            </if>
+            <if test="indId != null">
+                ind_id = #{indId},
+            </if>
+            <if test="indMoneyJie != null">
+                ind_money_jie = #{indMoneyJie},
+            </if>
+            <if test="indFangTime != null">
+                ind_fang_time = #{indFangTime},
+            </if>
+            <if test="lastRepaymentTime != null">
+                last_repayment_time = #{lastRepaymentTime},
+            </if>
+            <if test="indIfPay != null">
+                ind_if_pay = #{indIfPay},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="status != null">
+                `status` = #{status},
+            </if>
+        </set>
+        where ind_id = #{indId} and status = 0
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.UserLoanRecord">
+        <!--@mbg.generated-->
+        update user_loan_record
+        set app_id = #{appId},
+        user_name = #{userName},
+        user_idCard = #{userIdcard},
+        user_mobile = #{userMobile},
+        ind_id = #{indId},
+        ind_money_jie = #{indMoneyJie},
+        ind_fang_time = #{indFangTime},
+        last_repayment_time = #{lastRepaymentTime},
+        ind_if_pay = #{indIfPay},
+        create_time = #{createTime},
+        update_time = #{updateTime},
+        `status` = #{status}
+        where id = #{id}
+    </update>
+    <select id="selectAllByUserInfo" resultMap="BaseResultMap">
+        select distinct ulr.app_id,ulr.update_time,ulr.ind_if_pay
+        from user_loan_record as ulr
+        right join (
+            SELECT max(update_time) as update_time ,app_id,ind_if_pay
+            from user_loan_record
+            where user_mobile =#{userMobile}
+            and status = 0
+            <if test="userIdcard != null and userIdcard != ''">
+                and user_idCard = #{userIdcard}
+            </if>
+
+            <if test="userName != null and userName != ''">
+                and user_name =#{userName}
+            </if>
+            <if test="pIds != null and pIds.length != 0">
+                and app_id not in (
+                <foreach collection="pIds" separator="," item="pid">
+                    #{pid}
+                </foreach>
+                )
+            </if>
+            group by app_id
+        ) as temp
+        on temp.app_id = ulr.app_id
+        and temp.update_time = ulr.update_time;
+    </select>
+    <update id="updateStatusByIndId">
+        <!--@mbg.generated-->
+        update user_loan_record
+        set `status` = #{status}
+        where ind_id = #{indId}
+    </update>
+    <select id="selectHistoryByUserInfo" resultType="com.qingting.middleware.bean.TogetherDebtHistoryBean">
+        select
+        count(*) as orderCount
+        ,sum(case when app_id in (${allApp}) then 1 else 0 end) as platformOrderCount
+
+        ,sum(case when ind_if_pay = 1 then 1 else 0 end) as repaymentCount
+        ,sum(case when ind_if_pay = 1 and app_id in (${allApp}) then 1 else 0 end) as platformRepaymentCount
+
+        ,sum(case when ind_if_pay = 3 then 1 else 0 end) as overdueCount
+        ,sum(case when ind_if_pay = 3 and app_id in (${allApp}) then 1 else 0 end) as platformOverdueCount
+
+        ,sum(case when ind_if_pay in (0,2) then 1 else 0 end) as debtCount
+        ,sum(case when ind_if_pay in (0,2) and app_id in (${allApp}) then 1 else 0 end) as platformDebtCount
+
+        ,sum(case when ind_if_pay = 4 then 1 else 0 end) as applyCount
+        ,sum(case when ind_if_pay = 4 and app_id in (${allApp}) then 1 else 0 end) as platformApplyCount
+
+        ,count(distinct app_id) as appCount
+        ,count(distinct app_id in (${allApp})) as platformAppCount
+
+        ,max(last_repayment_time) as lastRepaymentTime
+        ,max(ind_fang_time) as lastIndFangTime
+        from user_loan_record
+        where user_idCard = #{userIdcard} and user_mobile =#{userMobile} and user_name =#{userName} and status = 0
+    </select>
+    <select id="selectByMobile" resultMap="BaseResultMap">
+        select
+        user_idCard,user_mobile,user_name
+        from user_loan_record
+        where user_mobile =#{userMobile} and status = 0
+        order by create_time desc limit 1
+    </select>
+    <update id="updateBatchOrderStatus">
+        update user_loan_record set ind_if_pay = #{indIfPay}
+        <if test="indFangTime != null">
+            ,ind_fang_time = #{indFangTime}
+        </if>
+        where app_id =#{appId}
+        and ind_id in (
+        <foreach collection="indId" item="i" separator=",">
+            #{i}
+        </foreach>)
+    </update>
+
+
+    <select id="fxpgShareByIndent" parameterType="java.util.Map" resultMap="ResultUserLoanRecordBean">
+        select ind_id,
+        user_idCard,
+        ind_money_jie,
+        create_time,
+        user_name,
+        ind_money_jie,
+        last_repayment_time,
+        ind_fang_time,
+        last_repayment_time,
+        ind_if_pay,
+        update_time,
+        count(1) periods
+        from user_loan_record
+        where status = 0 and user_idCard = #{id_no} and app_id = #{app_id} group by ind_id order by create_time desc ;
+    </select>
+    <select id="getPastDayDebtRecord" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_loan_record
+        where user_idCard =#{userIdcard} and status = 0
+        and create_time > date_sub(now(),interval 1 day)
+        and app_id in (${app})
+        <if test="userMobile != null and userMobile != ''">
+            and user_mobile =#{userMobile}
+        </if>
+        <if test="userName != null and userName != ''">
+            and user_name = #{userName}
+        </if>
+    </select>
+    <select id="selectDebtByUserInfo" resultType="java.lang.String">
+        select
+        DISTINCT app_id
+        from user_loan_record
+        where user_idCard = #{userIdcard}
+        and user_mobile =#{userMobile}
+        and user_name =#{userName}
+        and ind_if_pay not in (1,4)
+        and status = 0
+    </select>
+
+
+</mapper>
+

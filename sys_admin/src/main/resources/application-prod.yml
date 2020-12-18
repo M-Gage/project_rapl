@@ -1,0 +1,54 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /aladdin
+
+spring:
+  datasource:
+    url: jdbc:mysql://rm-m5ezy83k4eav0vw0v5o.mysql.rds.aliyuncs.com:3306/top_b_mx?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=Asia/Shanghai
+    password: EOduKjJ008YkWP5cePqHeqoE8PT1OIoX
+    username: top_b_mx
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cache:
+    ehcache:
+      config: classpath:static/ehcache.xml
+  #redis参数
+  redis:
+    database: 3
+    host: r-m5e02v9xsgdkfiqq1ppd.redis.rds.aliyuncs.com
+    port: 6380
+    password: sTKHoCdIf#69oaqN
+    # 生菜（jedis）连接Redis的客户端程序
+    lettuce:
+      pool:
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 9
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+        # 连接池中的最小空闲连接
+        min-idle: 0
+        # 连接超时时间（毫秒）默认2000ms
+#    timeout: 2000
+
+
+# 是否启用swagger
+swagger:
+  enable: true
+
+
+#输出日志文件
+logging:
+  level:
+    com.qingting.middleware: debug
+  file: /log/sys_admin.log
+
+# token 参数配置
+jwt:
+  # 标记
+  header: Authorization
+  # 密码
+  secret: +IPdqY.^a*Fg5!;wMJ?D)r30Ul2N%ZhRHy(G97sLf1V4Aueonci#xm>'pT"zOt:~
+  # token过期时间(一个月）
+  expiration: 2592000000

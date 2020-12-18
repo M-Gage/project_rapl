@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: dev
+# mybatis 配置
+mybatis:
+  type-aliases-package: com.qingting.middleware.entity
+  mapper-locations: classpath*:static/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+model:
+  encrypt:
+    param: ModelNo,ModelName,User
+
+report:
+  #访问A系统的唯一标识
+#  appkey: e4b5c9b1710d494492da7ccd4bad3e3c
+  appkey: 94k053e0e8474813b6r2f31fs15fc22f7
+  #A系统返回格式
+  rtype: json
+  #平台通行码
+  platformCode: EM_KELR0024
+  #A系统请求路径
+#  productA: http://47.104.80.252:8085
+  productA: http://bee.topting-fintech.com
+  #A黑名单数据查询
+  blackListQuery: /app/blackList/v1/shareBlackListQuery
+  #浅橙
+  qianCheng: /app/blackList/v1/blackList2
+  #白骑士黑名单
+  baiQiShi: /app/blackList/v1/blackList3
+  #孚临接口
+  fuLin: /app/blackList/v1/blackList4
+  #致诚阿福
+  zhiChengAFu: /app/blackList/v1/blackList5
+  #信用探针
+  creditTanzhen: /app/tianc/v1/xytz
+  #新源多头
+  xinYuan: /app/xinyan/v1/unify
+  #百融借贷意向
+  baiRong: /app/hjsj/v1/applyLoanStr
+  #致诚阿福_风险评估
+  aFufxpg: /app/hjsj/v1/fxpgGxb
+  #生产秘钥（用来解密数据的）
+  fuLinKey: Y3bSiWVR
+
+
+
+third:
+  #
+  zhimiUrl: http://47.93.185.26/risk/gzip/

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.AppMapper">
+  <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.App">
+    <!--@mbg.generated-->
+    <!--@Table app-->
+    <id column="app_id" property="appId" />
+    <result column="app_name" property="appName" />
+    <result column="app_key" property="appKey" />
+    <result column="password" property="password" />
+    <result column="public_key" property="publicKey" />
+    <result column="private_key" property="privateKey" />
+    <result column="total_amount" property="totalAmount" />
+    <result column="available_amount" property="availableAmount" />
+    <result column="model_id" property="modelId" />
+    <result column="report_switch" property="reportSwitch" />
+    <result column="factor_id" property="factorId" />
+    <result column="factor_list" property="factorList" />
+    <result column="factor_switch" property="factorSwitch" />
+    <result column="factor_show" property="factorShow" />
+    <result column="status" property="status" />
+    <result column="create_time" property="createTime" />
+    <result column="sys_user_id" property="sysUserId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    app_id, app_name, app_key, `password`, public_key, private_key, total_amount, available_amount, 
+    model_id, report_switch, factor_id, factor_list, factor_switch, factor_show, `status`, 
+    create_time, sys_user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from app
+    where app_id = #{appId} and status = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from app
+    where app_id = #{appId}
+  </delete>
+  <insert id="insert" keyColumn="app_id" keyProperty="appId" parameterType="com.qingting.middleware.entity.App" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into app (app_name, app_key, `password`, public_key, private_key, total_amount, 
+      available_amount, model_id, report_switch, factor_id, factor_list, factor_switch, 
+      factor_show, `status`, create_time, sys_user_id)
+    values (#{appName}, #{appKey}, #{password}, #{publicKey}, #{privateKey}, #{totalAmount}, 
+      #{availableAmount}, #{modelId}, #{reportSwitch}, #{factorId}, #{factorList}, #{factorSwitch}, 
+      #{factorShow}, #{status}, #{createTime}, #{sysUserId})
+  </insert>
+  <insert id="insertSelective" keyColumn="app_id" keyProperty="appId" parameterType="com.qingting.middleware.entity.App" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into app
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appName != null">
+        app_name,
+      </if>
+      <if test="appKey != null">
+        app_key,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="publicKey != null">
+        public_key,
+      </if>
+      <if test="privateKey != null">
+        private_key,
+      </if>
+      <if test="totalAmount != null">
+        total_amount,
+      </if>
+      <if test="availableAmount != null">
+        available_amount,
+      </if>
+      <if test="modelId != null">
+        model_id,
+      </if>
+      <if test="reportSwitch != null">
+        report_switch,
+      </if>
+      <if test="factorId != null">
+        factor_id,
+      </if>
+      <if test="factorList != null">
+        factor_list,
+      </if>
+      <if test="factorSwitch != null">
+        factor_switch,
+      </if>
+      <if test="factorShow != null">
+        factor_show,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="sysUserId != null">
+        sys_user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appName != null">
+        #{appName},
+      </if>
+      <if test="appKey != null">
+        #{appKey},
+      </if>
+      <if test="password != null">
+        #{password},
+      </if>
+      <if test="publicKey != null">
+        #{publicKey},
+      </if>
+      <if test="privateKey != null">
+        #{privateKey},
+      </if>
+      <if test="totalAmount != null">
+        #{totalAmount},
+      </if>
+      <if test="availableAmount != null">
+        #{availableAmount},
+      </if>
+      <if test="modelId != null">
+        #{modelId},
+      </if>
+      <if test="reportSwitch != null">
+        #{reportSwitch},
+      </if>
+      <if test="factorId != null">
+        #{factorId},
+      </if>
+      <if test="factorList != null">
+        #{factorList},
+      </if>
+      <if test="factorSwitch != null">
+        #{factorSwitch},
+      </if>
+      <if test="factorShow != null">
+        #{factorShow},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="sysUserId != null">
+        #{sysUserId},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.App">
+    <!--@mbg.generated-->
+    update app
+    <set>
+      <if test="appName != null">
+        app_name = #{appName},
+      </if>
+      <if test="appKey != null">
+        app_key = #{appKey},
+      </if>
+      <if test="password != null">
+        `password` = #{password},
+      </if>
+      <if test="publicKey != null">
+        public_key = #{publicKey},
+      </if>
+      <if test="privateKey != null">
+        private_key = #{privateKey},
+      </if>
+      <if test="totalAmount != null">
+        total_amount = #{totalAmount},
+      </if>
+      <if test="availableAmount != null">
+        available_amount = #{availableAmount},
+      </if>
+      <if test="modelId != null">
+        model_id = #{modelId},
+      </if>
+      <if test="reportSwitch != null">
+        report_switch = #{reportSwitch},
+      </if>
+      <if test="factorId != null">
+        factor_id = #{factorId},
+      </if>
+      <if test="factorList != null">
+        factor_list = #{factorList},
+      </if>
+      <if test="factorSwitch != null">
+        factor_switch = #{factorSwitch},
+      </if>
+      <if test="factorShow != null">
+        factor_show = #{factorShow},
+      </if>
+      <if test="status != null">
+        `status` = #{status},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="sysUserId != null">
+        sys_user_id = #{sysUserId},
+      </if>
+    </set>
+    where app_id = #{appId}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.App">
+    <!--@mbg.generated-->
+    update app
+    set app_name = #{appName},
+      app_key = #{appKey},
+      `password` = #{password},
+      public_key = #{publicKey},
+      private_key = #{privateKey},
+      total_amount = #{totalAmount},
+      available_amount = #{availableAmount},
+      model_id = #{modelId},
+      report_switch = #{reportSwitch},
+      factor_id = #{factorId},
+      factor_list = #{factorList},
+      factor_switch = #{factorSwitch},
+      factor_show = #{factorShow},
+      `status` = #{status},
+      create_time = #{createTime},
+      sys_user_id = #{sysUserId}
+    where app_id = #{appId}
+  </update>
+    <select id="selectByAppKey" resultMap="BaseResultMap">
+        select app_id,private_key,public_key,password,report_switch
+        from app
+        where app_key = #{appKey}
+        and status = 0
+    </select>
+    <select id="selectAllApp" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />
+        from app
+        <where>
+            <if test="condition != null and condition != ''">
+                app_key like concat('%',#{condition})
+            </if>
+        </where>
+    </select>
+    <update id="updateAppAmount">
+      update app
+      set total_amount = total_amount + #{rechargeAmount},
+      available_amount = available_amount + #{rechargeAmount}
+      where app_id = #{appId} and app.status = 0
+    </update>
+  <update id="updateAppAvailableAmount">
+    update app
+    set available_amount = available_amount + #{useAmount}
+    where app_id = #{appId} and app.status = 0
+  </update>
+</mapper>

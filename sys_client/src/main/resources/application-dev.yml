@@ -1,0 +1,67 @@
+server:
+  port: 8086
+spring:
+  datasource:
+    url: jdbc:mysql://47.104.80.252:3306/test_b?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=Asia/Shanghai
+    password: qingTing-2018
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 1
+      max-active: 50
+      query-timeout: 10000
+      #设置removeAbandoned="true"时，当连接池连接数到达(getNumIdle() < 2) and (getNumActive() > getMaxActive() - 3)  [空闲的连接小于2并且活动的连接大于(最大连接-3)] 时便会启动连接回收，
+      #那种活动时间超过removeAbandonedTimeout="1800"的连接将会被回收，
+      #同时如果logAbandoned="true"设置为true,程序在回收连接的同时会打印日志。
+      #removeAbandoned是连接池的高级功能，理论上这中配置不应该出现在实际的生产环境，因为有时应用程序执行长事务，可能这种情况下，会被连接池误回收，该种配置一般在程序测试阶段，为了定位连接泄漏的具体代码位置，被开启。
+      #生产环境中连接的关闭应该靠程序自己保证。
+      #先关着
+      remove-abandoned: false
+      #必须要remove-abandoned为false才能生效，这样连接出问题的时候，每隔3000秒请求
+      async-init: true
+      time-between-connect-error-millis: 3000
+      #超时重试次数
+      connection-error-retry-attempts: 3
+
+  cache:
+    ehcache:
+      config: classpath:static/ehcache.xml
+  #redis参数
+  redis:
+    database: 5
+    host: r-m5e02v9xsgdkfiqq1ppd.redis.rds.aliyuncs.com
+    port: 6380
+    password: sTKHoCdIf#69oaqN
+    lettuce: # 生菜（jedis）连接Redis的客户端程序
+      pool:
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 9
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+        # 连接池中的最小空闲连接
+        min-idle: 0
+  # 连接超时时间（毫秒）默认2000ms
+#    timeout: 2000
+
+# 是否启用swagger
+swagger:
+  enable: true
+
+#控制台输出日志
+logging:
+  level:
+    com.qingting.middleware: debug
+
+
+# token 参数配置
+jwt:
+  # 标记
+  header: Authorization
+  # 密码
+  secret: 12(U@}!)@&*()$*)&TPIU324_)K@(!~~!@@#
+  # token过期时间(一个月）
+  expiration: 2592000000
+

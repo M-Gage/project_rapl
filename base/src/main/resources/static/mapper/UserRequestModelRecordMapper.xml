@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.UserRequestModelRecordMapper">
+  <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.UserRequestModelRecord">
+    <!--@mbg.generated-->
+    <!--@Table user_request_model_record-->
+    <id column="id" property="id" />
+    <result column="app_id" property="appId" />
+    <result column="username" property="username" />
+    <result column="id_card" property="idCard" />
+    <result column="mobile" property="mobile" />
+    <result column="score" property="score" />
+    <result column="model_id" property="modelId" />
+    <result column="factor_id" property="factorId" />
+    <result column="used_factor" property="usedFactor" />
+    <result column="task_id" property="taskId" />
+    <result column="channel_id" property="channelId" />
+    <result column="request_result" property="requestResult" />
+    <result column="create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, app_id, username, id_card, mobile, score, model_id, factor_id, used_factor, task_id, 
+    channel_id, request_result, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user_request_model_record
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from user_request_model_record
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.UserRequestModelRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_request_model_record (app_id, username, id_card, mobile, score, model_id, factor_id, 
+      used_factor, task_id, channel_id, request_result, create_time)
+    values (#{appId}, #{username}, #{idCard}, #{mobile}, #{score}, #{modelId}, #{factorId}, 
+      #{usedFactor}, #{taskId}, #{channelId}, #{requestResult}, #{createTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.UserRequestModelRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_request_model_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="modelId != null">
+        model_id,
+      </if>
+      <if test="factorId != null">
+        factor_id,
+      </if>
+      <if test="usedFactor != null">
+        used_factor,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="requestResult != null">
+        request_result,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        #{appId},
+      </if>
+      <if test="username != null">
+        #{username},
+      </if>
+      <if test="idCard != null">
+        #{idCard},
+      </if>
+      <if test="mobile != null">
+        #{mobile},
+      </if>
+      <if test="score != null">
+        #{score},
+      </if>
+      <if test="modelId != null">
+        #{modelId},
+      </if>
+      <if test="factorId != null">
+        #{factorId},
+      </if>
+      <if test="usedFactor != null">
+        #{usedFactor},
+      </if>
+      <if test="taskId != null">
+        #{taskId},
+      </if>
+      <if test="channelId != null">
+        #{channelId},
+      </if>
+      <if test="requestResult != null">
+        #{requestResult},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.UserRequestModelRecord">
+    <!--@mbg.generated-->
+    update user_request_model_record
+    <set>
+      <if test="appId != null">
+        app_id = #{appId},
+      </if>
+      <if test="username != null">
+        username = #{username},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile},
+      </if>
+      <if test="score != null">
+        score = #{score},
+      </if>
+      <if test="modelId != null">
+        model_id = #{modelId},
+      </if>
+      <if test="factorId != null">
+        factor_id = #{factorId},
+      </if>
+      <if test="usedFactor != null">
+        used_factor = #{usedFactor},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId},
+      </if>
+      <if test="channelId != null">
+        channel_id = #{channelId},
+      </if>
+      <if test="requestResult != null">
+        request_result = #{requestResult},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id_card = #{idCard} and mobile = #{mobile} and task_id = #{taskId}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.UserRequestModelRecord">
+    <!--@mbg.generated-->
+    update user_request_model_record
+    set app_id = #{appId},
+      username = #{username},
+      id_card = #{idCard},
+      mobile = #{mobile},
+      score = #{score},
+      model_id = #{modelId},
+      factor_id = #{factorId},
+      used_factor = #{usedFactor},
+      task_id = #{taskId},
+      channel_id = #{channelId},
+      request_result = #{requestResult},
+      create_time = #{createTime}
+    where id = #{id}
+  </update>
+    <select id="selectUserMobileHistoryApply" resultType="com.qingting.middleware.bean.HistoryApplyBean">
+        select
+        sum(case when 1 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600 then 1 else 0 end) as mobile_1h_cnt,
+        sum(case when 3 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600 then 1 else 0 end) as mobile_3h_cnt,
+        sum(case when 12 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600 then 1 else 0 end) as
+        mobile_12h_cnt,
+        sum(case when 1 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        mobile_1d_cnt,
+        sum(case when 3 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        mobile_3d_cnt,
+        sum(case when 7 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        mobile_7d_cnt,
+        sum(case when 14 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        mobile_14d_cnt,
+        sum(case when 30 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        mobile_30d_cnt,
+        sum(case when 60 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        mobile_60d_cnt
+        from user_request_model_record where mobile = #{mobile}
+
+
+    </select>
+    <select id="selectUserIdCardHistoryApply" resultType="com.qingting.middleware.bean.HistoryApplyBean">
+        select
+        sum(case when 1 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600 then 1 else 0 end) as idcard_1h_cnt,
+        sum(case when 3 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600 then 1 else 0 end) as idcard_3h_cnt,
+        sum(case when 12 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600 then 1 else 0 end) as
+        idcard_12h_cnt,
+        sum(case when 1 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        idcard_1d_cnt,
+        sum(case when 3 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        idcard_3d_cnt,
+        sum(case when 7 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        idcard_7d_cnt,
+        sum(case when 14 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        idcard_14d_cnt,
+        sum(case when 30 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        idcard_30d_cnt,
+        sum(case when 60 >= (UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(create_time))/3600*24 then 1 else 0 end) as
+        idcard_60d_cnt
+        from user_request_model_record where id_card = #{idCard}
+    </select>
+</mapper>

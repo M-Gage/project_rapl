@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.AppModelPriceMapper">
+  <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.AppModelPrice">
+    <!--@mbg.generated-->
+    <id column="id" property="id" />
+    <result column="app_id" property="appId" />
+    <result column="model_id" property="modelId" />
+    <result column="market_price" property="marketPrice" />
+    <result column="cost_price" property="costPrice" />
+    <result column="total_times" property="totalTimes" />
+    <result column="used_times" property="usedTimes" />
+    <result column="status" property="status" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, app_id, model_id, market_price, cost_price, total_times, used_times, `status`,
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from app_model_price
+    where id = #{id} and status = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from app_model_price
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.AppModelPrice" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into app_model_price (app_id, model_id, market_price, cost_price, total_times, used_times,
+      `status`, create_time, update_time)
+    values (#{appId}, #{modelId}, #{marketPrice}, #{costPrice}, #{totalTimes}, #{usedTimes},
+      #{status}, #{createTime}, #{updateTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.AppModelPrice" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into app_model_price
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="modelId != null">
+        model_id,
+      </if>
+      <if test="marketPrice != null">
+        market_price,
+      </if>
+      <if test="costPrice != null">
+        cost_price,
+      </if>
+      <if test="totalTimes != null">
+        total_times,
+      </if>
+      <if test="usedTimes != null">
+        used_times,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        #{appId},
+      </if>
+      <if test="modelId != null">
+        #{modelId},
+      </if>
+      <if test="marketPrice != null">
+        #{marketPrice},
+      </if>
+      <if test="costPrice != null">
+        #{costPrice},
+      </if>
+      <if test="totalTimes != null">
+        #{totalTimes},
+      </if>
+      <if test="usedTimes != null">
+        #{usedTimes},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.AppModelPrice">
+    <!--@mbg.generated-->
+    update app_model_price
+    <set>
+      <if test="appId != null">
+        app_id = #{appId},
+      </if>
+      <if test="modelId != null">
+        model_id = #{modelId},
+      </if>
+      <if test="marketPrice != null">
+        market_price = #{marketPrice},
+      </if>
+      <if test="costPrice != null">
+        cost_price = #{costPrice},
+      </if>
+      <if test="totalTimes != null">
+        total_times = #{totalTimes},
+      </if>
+      <if test="usedTimes != null">
+        used_times = #{usedTimes},
+      </if>
+      <if test="status != null">
+        `status` = #{status},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+    </set>
+    where app_id = #{appId} and model_id = #{modelId} and status = 0
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.AppModelPrice">
+    <!--@mbg.generated-->
+    update app_model_price
+    set app_id = #{appId},
+      model_id = #{modelId},
+      market_price = #{marketPrice},
+      cost_price = #{costPrice},
+      total_times = #{totalTimes},
+      used_times = #{usedTimes},
+      `status` = #{status},
+      create_time = #{createTime},
+      update_time = #{updateTime}
+    where id = #{id}
+  </update>
+    <select id="selectByAppIdAndModelId" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from app_model_price
+      where app_id = #{appId} and model_id = #{modelId} and status = 0
+    </select>
+  <update id="updateUsedTimes">
+    update app_model_price
+    set used_times = used_times + 1
+    where app_id = #{appId} and model_id = #{modelId} and status = 0
+  </update>
+  <update id="updateAppModelPrice">
+    update app_model_price
+    <set>
+      <if test="totalTimes != null">
+        total_times = total_times + #{totalTimes},
+      </if>
+      <if test="status != null">
+        `status` = #{status},
+      </if>
+    </set>
+    where app_id = #{appId} and model_id = #{modelId} and status = 0
+  </update>
+</mapper>

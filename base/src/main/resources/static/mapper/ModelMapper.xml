@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingting.middleware.dao.ModelMapper">
+  <resultMap id="BaseResultMap" type="com.qingting.middleware.entity.Model">
+    <!--@mbg.generated-->
+    <!--@Table model-->
+    <id column="id" property="id" />
+    <result column="model_name" property="modelName" />
+    <result column="model_no" property="modelNo" />
+    <result column="factor_id" property="factorId" />
+    <result column="factor_list" property="factorList" />
+    <result column="factor_list_switch" property="factorListSwitch" />
+    <result column="extend_score" property="extendScore" />
+    <result column="report_switch" property="reportSwitch" />
+    <result column="status" property="status" />
+    <result column="create_time" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, model_name, model_no, factor_id, factor_list, factor_list_switch, extend_score, 
+    report_switch, `status`, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from model
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from model
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.Model" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into model (model_name, model_no, factor_id, factor_list, factor_list_switch, 
+      extend_score, report_switch, `status`, create_time)
+    values (#{modelName}, #{modelNo}, #{factorId}, #{factorList}, #{factorListSwitch}, 
+      #{extendScore}, #{reportSwitch}, #{status}, #{createTime})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.qingting.middleware.entity.Model" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into model
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="modelName != null">
+        model_name,
+      </if>
+      <if test="modelNo != null">
+        model_no,
+      </if>
+      <if test="factorId != null">
+        factor_id,
+      </if>
+      <if test="factorList != null">
+        factor_list,
+      </if>
+      <if test="factorListSwitch != null">
+        factor_list_switch,
+      </if>
+      <if test="extendScore != null">
+        extend_score,
+      </if>
+      <if test="reportSwitch != null">
+        report_switch,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="modelName != null">
+        #{modelName},
+      </if>
+      <if test="modelNo != null">
+        #{modelNo},
+      </if>
+      <if test="factorId != null">
+        #{factorId},
+      </if>
+      <if test="factorList != null">
+        #{factorList},
+      </if>
+      <if test="factorListSwitch != null">
+        #{factorListSwitch},
+      </if>
+      <if test="extendScore != null">
+        #{extendScore},
+      </if>
+      <if test="reportSwitch != null">
+        #{reportSwitch},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qingting.middleware.entity.Model">
+    <!--@mbg.generated-->
+    update model
+    <set>
+      <if test="modelName != null">
+        model_name = #{modelName},
+      </if>
+      <if test="modelNo != null">
+        model_no = #{modelNo},
+      </if>
+      <if test="factorId != null">
+        factor_id = #{factorId},
+      </if>
+      <if test="factorList != null">
+        factor_list = #{factorList},
+      </if>
+      <if test="factorListSwitch != null">
+        factor_list_switch = #{factorListSwitch},
+      </if>
+      <if test="extendScore != null">
+        extend_score = #{extendScore},
+      </if>
+      <if test="reportSwitch != null">
+        report_switch = #{reportSwitch},
+      </if>
+      <if test="status != null">
+        `status` = #{status},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qingting.middleware.entity.Model">
+    <!--@mbg.generated-->
+    update model
+    set model_name = #{modelName},
+      model_no = #{modelNo},
+      factor_id = #{factorId},
+      factor_list = #{factorList},
+      factor_list_switch = #{factorListSwitch},
+      extend_score = #{extendScore},
+      report_switch = #{reportSwitch},
+      `status` = #{status},
+      create_time = #{createTime}
+    where id = #{id}
+  </update>
+    <select id="selectByModelNo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from model
+        where model_no = #{modelNo} and model_name = #{modelName} and status = 0
+    </select>
+</mapper>

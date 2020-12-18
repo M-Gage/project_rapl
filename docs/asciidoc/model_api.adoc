@@ -1,0 +1,415 @@
+= 自有模型风控接口 RESTFul APIs
+
+
+
+=== 版本信息
+[%hardbreaks]
+__版本__ : 0.0.1
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : localhost:8086
+__基础路径__ : /
+
+[[_paths]]
+== 资源
+
+[[_modelv1usingpost]]
+==== V1风控对接
+....
+POST /api/model/jueMuJiao
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**模型参数** +
+__必填__|部分加密，可压缩|<<_modelparambean,ModelParamBean>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_56edc2aa9785d52e6684fc29bfc3b8df,数据返回类«风控模型返回对象»>>
+|===
+
+
+===== 网络文件的类型
+
+* `application/json`
+
+
+
+
+===== 安全
+
+[options="header", cols=".^3,.^4,.^13"]
+|===
+|类型|名称|作用域
+|**apiKey**|**<<_authorization,Authorization>>**|global
+|===
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/model/jueMuJiao
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "baiQiShi" : "string",
+  "channelId" : "string",
+  "creditTanzhen" : "string",
+  "fuLin" : "string",
+  "moXie" : "string",
+  "modelName" : "string",
+  "modelNo" : "string",
+  "qianCheng" : "string",
+  "user" : "string",
+  "youDun" : "string",
+  "zhiChengAFu" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : {
+    "historyApplyBean" : {
+      "idCard_12h_cnt" : 0,
+      "idCard_14d_cnt" : 0,
+      "idCard_1d_cnt" : 0,
+      "idCard_1h_cnt" : 0,
+      "idCard_30d_cnt" : 0,
+      "idCard_3d_cnt" : 0,
+      "idCard_3h_cnt" : 0,
+      "idCard_60d_cnt" : 0,
+      "idCard_7d_cnt" : 0,
+      "mobile_12h_cnt" : 0,
+      "mobile_14d_cnt" : 0,
+      "mobile_1d_cnt" : 0,
+      "mobile_1h_cnt" : 0,
+      "mobile_30d_cnt" : 0,
+      "mobile_3d_cnt" : 0,
+      "mobile_3h_cnt" : 0,
+      "mobile_60d_cnt" : 0,
+      "mobile_7d_cnt" : 0
+    },
+    "idCard" : "string",
+    "mobile" : "string",
+    "score" : 0.0,
+    "taskId" : "string"
+  },
+  "message" : "string"
+}
+----
+
+
+[[_modelv2usingpost]]
+==== V2风控对接
+....
+POST /api/model/kanJinLong
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**模型参数** +
+__必填__|部分加密，可压缩|<<_modelparambean,ModelParamBean>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_56edc2aa9785d52e6684fc29bfc3b8df,数据返回类«风控模型返回对象»>>
+|===
+
+
+===== 网络文件的类型
+
+* `application/json`
+
+
+
+
+===== 安全
+
+[options="header", cols=".^3,.^4,.^13"]
+|===
+|类型|名称|作用域
+|**apiKey**|**<<_authorization,Authorization>>**|global
+|===
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/model/kanJinLong
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "baiQiShi" : "string",
+  "channelId" : "string",
+  "creditTanzhen" : "string",
+  "fuLin" : "string",
+  "moXie" : "string",
+  "modelName" : "string",
+  "modelNo" : "string",
+  "qianCheng" : "string",
+  "user" : "string",
+  "youDun" : "string",
+  "zhiChengAFu" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : {
+    "historyApplyBean" : {
+      "idCard_12h_cnt" : 0,
+      "idCard_14d_cnt" : 0,
+      "idCard_1d_cnt" : 0,
+      "idCard_1h_cnt" : 0,
+      "idCard_30d_cnt" : 0,
+      "idCard_3d_cnt" : 0,
+      "idCard_3h_cnt" : 0,
+      "idCard_60d_cnt" : 0,
+      "idCard_7d_cnt" : 0,
+      "mobile_12h_cnt" : 0,
+      "mobile_14d_cnt" : 0,
+      "mobile_1d_cnt" : 0,
+      "mobile_1h_cnt" : 0,
+      "mobile_30d_cnt" : 0,
+      "mobile_3d_cnt" : 0,
+      "mobile_3h_cnt" : 0,
+      "mobile_60d_cnt" : 0,
+      "mobile_7d_cnt" : 0
+    },
+    "idCard" : "string",
+    "mobile" : "string",
+    "score" : 0.0,
+    "taskId" : "string"
+  },
+  "message" : "string"
+}
+----
+
+[[_definitions]]
+== 定义
+
+
+[[_modelparambean]]
+=== ModelParamBean
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**baiQiShi** +
+__可选__|**样例** : `"string"`|string
+|**channelId** +
+__可选__|渠道号 +
+**样例** : `"string"`|string
+|**creditTanzhen** +
+__可选__|信用探针报文 +
+**样例** : `"string"`|string
+|**fuLin** +
+__可选__|孚临报文 +
+**样例** : `"string"`|string
+|**moXie** +
+__可选__|魔蝎报文 +
+**样例** : `"string"`|string
+|**modelName** +
+__必填__|模型名称（加密） +
+**样例** : `"string"`|string
+|**modelNo** +
+__必填__|模型编号（加密） +
+**样例** : `"string"`|string
+|**qianCheng** +
+__可选__|**样例** : `"string"`|string
+|**user** +
+__必填__|用户信息 +
+**样例** : `"string"`|string
+|**youDun** +
+__可选__|有盾报文 +
+**样例** : `"string"`|string
+|**zhiChengAFu** +
+__可选__|致诚阿福报文 +
+**样例** : `"string"`|string
+|===
+
+
+
+[[_413a64c225e2c4f80e5646f2d8ac6cf9]]
+=== 数据返回类
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**code** +
+__可选__|响应编码号 +
+**样例** : `0`|integer (int32)
+|**data** +
+__可选__|返回数据 +
+**样例** : `"object"`|object
+|**message** +
+__可选__|具体信息 +
+**样例** : `"string"`|string
+|===
+
+
+[[_56edc2aa9785d52e6684fc29bfc3b8df]]
+=== 数据返回类«风控模型返回对象»
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**code** +
+__可选__|响应编码号 +
+**样例** : `0`|integer (int32)
+|**data** +
+__可选__|返回数据 +
+**样例** : `"<<_9bc016c1b51f63a45eb4a10055198733>>"`|<<_9bc016c1b51f63a45eb4a10055198733,风控模型返回对象>>
+|**message** +
+__可选__|具体信息 +
+**样例** : `"string"`|string
+|===
+
+
+
+
+[[_a4b9713b76fd417a8770f802053e9092]]
+=== 用户历史操作轨迹
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**idCard_12h_cnt** +
+__可选__|相同身份证过去12小时内调用次数 +
+**样例** : `0`|integer (int32)
+|**idCard_14d_cnt** +
+__可选__|相同身份证过去14天内调用次数 +
+**样例** : `0`|integer (int32)
+|**idCard_1d_cnt** +
+__可选__|相同身份证过去1天内调用次数 +
+**样例** : `0`|integer (int32)
+|**idCard_1h_cnt** +
+__可选__|相同身份证过去1小时内调用次数 +
+**样例** : `0`|integer (int32)
+|**idCard_30d_cnt** +
+__可选__|相同身份证过去30天内调用次数 +
+**样例** : `0`|integer (int32)
+|**idCard_3d_cnt** +
+__可选__|相同身份证过去3天内调用次数 +
+**样例** : `0`|integer (int32)
+|**idCard_3h_cnt** +
+__可选__|相同身份证过去3小时内调用次数 +
+**样例** : `0`|integer (int32)
+|**idCard_60d_cnt** +
+__可选__|相同身份证过去60天内调用次数 +
+**样例** : `0`|integer (int32)
+|**idCard_7d_cnt** +
+__可选__|相同身份证过去7天内调用次数 +
+**样例** : `0`|integer (int32)
+|**mobile_12h_cnt** +
+__可选__|相同手机号过去12小时内调用次数 +
+**样例** : `0`|integer (int32)
+|**mobile_14d_cnt** +
+__可选__|相同手机号过去14天内调用次数 +
+**样例** : `0`|integer (int32)
+|**mobile_1d_cnt** +
+__可选__|相同手机号过去1天内调用次数 +
+**样例** : `0`|integer (int32)
+|**mobile_1h_cnt** +
+__可选__|相同手机号过去1小时内调用次数 +
+**样例** : `0`|integer (int32)
+|**mobile_30d_cnt** +
+__可选__|相同手机号过去30天内调用次数 +
+**样例** : `0`|integer (int32)
+|**mobile_3d_cnt** +
+__可选__|相同手机号过去3天内调用次数 +
+**样例** : `0`|integer (int32)
+|**mobile_3h_cnt** +
+__可选__|相同手机号过去3小时内调用次数 +
+**样例** : `0`|integer (int32)
+|**mobile_60d_cnt** +
+__可选__|相同手机号过去60天内调用次数 +
+**样例** : `0`|integer (int32)
+|**mobile_7d_cnt** +
+__可选__|相同手机号过去7天内调用次数 +
+**样例** : `0`|integer (int32)
+|===
+
+
+
+[[_9bc016c1b51f63a45eb4a10055198733]]
+=== 风控模型返回对象
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**historyApplyBean** +
+__必填__|用户历史操作轨迹 +
+**样例** : `"<<_a4b9713b76fd417a8770f802053e9092>>"`|<<_a4b9713b76fd417a8770f802053e9092,用户历史操作轨迹>>
+|**idCard** +
+__必填__|用户身份证号 +
+**样例** : `"string"`|string
+|**mobile** +
+__必填__|手机号 +
+**样例** : `"string"`|string
+|**score** +
+__必填__|风控分 +
+**样例** : `0.0`|number
+|**taskId** +
+__必填__|任务id +
+**样例** : `"string"`|string
+|===
+
+
+
+
+[[_securityscheme]]
+== 安全
+
+[[_authorization]]
+=== Authorization
+[%hardbreaks]
+__类型__ : apiKey
+__名称__ : Authorization
+__在__ : HEADER
+
+
+
+
